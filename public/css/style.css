@@ -1,0 +1,49 @@
+#homeDiv{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+.not{
+    text-decoration: underline;
+}
+
+input {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
+  margin-bottom: 20px;
+}
+
+.reg {
+  color: white;
+  background-color: rgba(104, 85, 224, 1);
+}
+
+.log {
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+}
+
+input:hover {
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
+}
+
+#none:hover{
+  color: white;
+  box-shadow: white;
+  background-color: white;
+}

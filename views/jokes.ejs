@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Jokes</h1>
+    <a href="/user">View your jokes</a>
+    <ul>
+    <% jokes.forEach( el => { %>
+            <li class='jokesList' data-id='<%=el._id%>'>
+                <% if(el.setup){%>
+                    <span><%= el.setup%></span>
+                <%}%>
+                <span><%= el.punchline %></span>
+                
+                <span class = 'like'>like</span>
+                <span class = 'dislike'>dislike</span>
+                <span class = 'delete'>delete</span>
+            </li>
+    <% }) %>    
+    </ul>
+
+
+    <form action="/jokes/createJoke" method='POST'>
+        <input type="text" placeholder="Setup" name='setup'>
+        <input type="text" placeholder="Punchline" name='punchline'>
+        <input type="submit">
+    </form>
+
+    <a href="/logout">Logout</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
