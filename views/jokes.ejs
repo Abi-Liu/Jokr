@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/ca981d34c3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,10 +18,12 @@
                     <span><%= el.setup%></span>
                 <%}%>
                 <span><%= el.punchline %></span>
-                
-                <span class = 'like'>like</span>
-                <span class = 'dislike'>dislike</span>
-                <span class = 'delete'>delete</span>
+                <span>Author: <%=users.find((item) => item.id === jokes[0].userId).userName%></span>
+                <span><%= el.likes%></span>
+                <span class = 'like fa-solid fa-thumbs-up'></span>
+                <span><%= el.dislikes%></span>
+                <span class = 'dislike fa-solid fa-thumbs-down'></span>
+                <span class = 'delete fa-solid fa-trash'></span>
             </li>
     <% }) %>    
     </ul>

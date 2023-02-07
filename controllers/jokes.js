@@ -1,10 +1,12 @@
 const Joke = require("../models/Joke");
+const User = require('../models/User')
 
 module.exports = {
     getJokes: async(req, res) => {
         try{
             const jokes = await Joke.find()
-            res.render('jokes.ejs', {jokes: jokes})
+            const users = await User.find()
+            res.render('jokes.ejs', {jokes: jokes, users: users})
         }
         catch (err){
             console.error(err)
@@ -13,7 +15,6 @@ module.exports = {
     getUserJokes: async (req, res)=>{
         try{
             const jokes = await Joke.find({userId: req.user.id})
-                .populate('user')
 
             res.render('userJokes.ejs', {jokes: jokes})
         } catch (err){
