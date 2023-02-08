@@ -64,11 +64,12 @@ module.exports = {
     },
    deleteJoke: async (req, res)=>{
         try{ 
+            console.log(req.body)
             await Joke.findOneAndDelete({_id: req.body.id})
             console.log('deleted')
             res.json('deleted')
         }catch(err){
-
+            console.error(err)
         }
    }
 }

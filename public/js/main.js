@@ -44,6 +44,7 @@ async function addDislike(){
 
 async function del(){
     const jokeID = this.parentNode.dataset.id;
+    console.log(this.parentNode)
     try{
         const response = await fetch('/jokes/deleteJoke', {
             method: 'delete',
