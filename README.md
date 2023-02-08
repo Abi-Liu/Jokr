@@ -6,7 +6,7 @@ This is a Full-stack joke sharing app called Jokr. I built this app using the MV
 
 # Technologies
 
-For this app I used Node.js, Express.js, vanilla Javascript, MongoDB, Mongoose, EJS, and CSS for styling.
+For this app I used Node.js, Express.js, vanilla Javascript, MongoDB, Mongoose, EJS, and Bootstrap for styling.
 
 ---
 
