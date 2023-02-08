@@ -5,6 +5,7 @@ module.exports = {
     getJokes: async(req, res) => {
         try{
             const jokes = await Joke.find()
+                .sort({likes: 'desc'})
             const users = await User.find()
             res.render('jokes.ejs', {jokes: jokes, users: users})
         }
@@ -15,8 +16,9 @@ module.exports = {
     getUserJokes: async (req, res)=>{
         try{
             const jokes = await Joke.find({userId: req.user.id})
-
-            res.render('userJokes.ejs', {jokes: jokes})
+                .sort({likes: 'desc'})
+            console.log(jokes)
+            res.render('userJokes.ejs', {jokes: jokes, user: req.user})
         } catch (err){
             console.error(err)
         }
@@ -28,7 +30,7 @@ module.exports = {
             req.body.dislikes = 0
             await Joke.create(req.body)
             console.log('joke created')
-            res.redirect('/jokes')
+            res.redirect('/jokes/user')
         }
          catch (err){
             console.error(err)
