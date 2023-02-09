@@ -63,8 +63,11 @@
                             <card class="body">
                                 <% if(col[j][i].setup){%>
                                     <p class="card-title pb-3"><%= col[j][i].setup%></p>
+                                    <p class="card-text"><%= col[j][i].punchline %></p>
+                                <%} else {%> 
+                                    <p class="card-title pb-3"><%= col[j][i].punchline%></p>
                                 <%}%>
-                                <p class="card-text"><%= col[j][i].punchline %></p>
+                                
                             </card>
                             <div class="card-footer" data-id='<%=col[j][i]._id%>'>
                                 <span><%= col[j][i].likes%></span>
