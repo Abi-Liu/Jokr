@@ -7,7 +7,8 @@ module.exports = {
             const jokes = await Joke.find()
                 // .sort({likes: 'desc'})
             const users = await User.find()
-            res.render('jokes.ejs', {jokes: jokes, users: users})
+            console.log(req.user.id)
+            res.render('jokes.ejs', {jokes: jokes, users: users, loggedUser: req.user.id})
         }
         catch (err){
             console.error(err)
@@ -28,6 +29,8 @@ module.exports = {
             req.body.userId = req.user.id
             req.body.likes = 0
             req.body.dislikes = 0
+            req.body.likesArr = []
+            req.body.dislikesArr = []
             await Joke.create(req.body)
             console.log('joke created')
             res.redirect('/jokes/user')
@@ -38,26 +41,47 @@ module.exports = {
     },
     like: async (req, res) => {
         try{
-            await Joke.findOneAndUpdate({_id: req.body.id}, {
-                $inc: {
-                    'likes': 1
-                }
-            })
-            console.log('like added')
-            res.json('like added')
+            const user = req.user.id
+            const joke = await Joke.find({_id: req.body.id})
+            if(!joke[0].likesArr.includes(user)){
+                await Joke.findOneAndUpdate({_id: req.body.id}, {
+                    $inc: {
+                        'likes': 1
+                    },
+                    $push: {
+                        'likesArr': user
+                    }
+                })
+                console.log('like added')
+                res.json('like added')
+            }
+            console.log('user already liked')
+            res.json('user already liked')
+
         } catch(err){
             console.error(err)
         }
     },
     dislike: async (req, res) => {
         try{
-            await Joke.findOneAndUpdate({_id: req.body.id}, {
-                $inc: {
-                    'dislikes': 1
-                }
-            })
-            console.log('dislike added')
-            res.json('dislike added')
+            const user = req.user.id
+            const joke = await Joke.find({_id: req.body.id})
+            if (!joke[0].dislikesArr.includes(user)) {
+              await Joke.findOneAndUpdate({ _id: req.body.id },
+                {
+                  $inc: {
+                    dislikes: 1,
+                  },
+                  $push: {
+                    dislikesArr: user
+                  }
+                })
+              console.log('dislike added')
+              res.json('dislike added')
+            }
+            console.log('user already disliked')
+            res.json('user already disliked')
+
         } catch(err){
             console.error(err)
         }

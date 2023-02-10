@@ -3,7 +3,7 @@
 }
 
 .card{
-  height: 35%;
+  height: 200px;
   overflow: scroll
 }
 
@@ -13,4 +13,9 @@
 }
 body{
   font-family: 'Inter';
+  background: #212529;
+}
+
+.voted{
+  color: #047AE8;
 }

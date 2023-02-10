@@ -24,9 +24,17 @@ const JokeSchema = new mongoose.Schema({
     required: true,
   },
   user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
+  likesArr:{
+    type: [String],
+    required: true,
+  },
+  dislikesArr:{
+    type: [String],
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('Joke', JokeSchema)
