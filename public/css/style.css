@@ -16,6 +16,10 @@ body{
   background: #212529;
 }
 
-.voted{
+.liked{
   color: #047AE8;
+}
+
+.disliked{
+  color: #FF0100;
 }

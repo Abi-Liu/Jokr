@@ -73,14 +73,14 @@
                                 <div data-id='<%=col[j][i]._id%>'>
                                     <span><%= col[j][i].likes%></span>
                                     <%if(col[j][i].likesArr.includes(loggedUser)){%>
-                                        <span class='fa-solid fa-thumbs-up like px-1 px-1 voted'></span>
+                                        <span class='fa-solid fa-thumbs-up like px-1 px-1 liked'></span>
                                     <%} else {%>
                                         <span class='fa-solid fa-thumbs-up like px-1 px-1'></span>
                                     <%}%>
                                     <span><%= col[j][i].dislikes%></span>
 
                                     <%if(col[j][i].dislikesArr.includes(loggedUser)){%>
-                                        <span class='fa-solid fa-thumbs-down dislike px-1 px-1 voted'></span>
+                                        <span class='fa-solid fa-thumbs-down dislike px-1 px-1 disliked'></span>
                                     <%} else {%>
                                         <span class='fa-solid fa-thumbs-down dislike px-1 px-1'></span>
                                     <%}%>
