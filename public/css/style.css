@@ -1,3 +1,16 @@
 .compliment{
   background: #efe8db;
 }
+
+.card{
+  height: 35%;
+  overflow: scroll
+}
+
+.navbar-brand{
+  font-family: 'Sassy Frass';
+  font-size: 30px;
+}
+body{
+  font-family: 'Inter';
+}

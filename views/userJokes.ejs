@@ -7,6 +7,13 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/ca981d34c3.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sassy+Frass&display=swap" rel="stylesheet">
+    <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,14 +39,17 @@
         </div>
     </nav>
 
-    <section class = 'compliment'>
-        <div class="container">
-            <h1 >Hey <%=user.userName%>!</h1>
+    <section class = 'compliment d-flex justify-content-between align-items-center'>
+        <div class="container p-lg-4">
+            <h1 class = ps-3>Hey <%=user.userName%>!</h1>
             <% if(jokes.length === 0){%>
-                <h4>You have no jokes yet. Create one below!</h4>
+                <h4 class = ps-3>You have no jokes yet. Create one below!</h4>
             <%} else { %>
-                <h4>Here are your jokes</h4>
+                <h4 class = ps-3>Here are your jokes</h4>
             <%}%>
+        </div>
+        <div class="container pe-5">
+            <button class="btn btn-primary btn-lg float-end" data-bs-toggle="modal" data-bs-target="#create">Create New Joke</button>
         </div>
     </section>
     
@@ -59,23 +69,22 @@
                 <%for(let j = 0; j<col.length; j++){%>
                     <div class="col-md">
                     <% for(let i = 0; i<col[j].length; i++){%>
-                        <div class="card border-success text-dark mb-3 h-50" style="max-width: 18rem;">
+                        <div class="card border-dark text-dark mb-3" style="max-width: 18rem;">
                             <card class="body">
                                 <% if(col[j][i].setup){%>
-                                    <p class="card-title pb-3"><%= col[j][i].setup%></p>
+                                    <p class="card-title p-4"><%= col[j][i].setup%></p>
                                     <p class="card-text"><%= col[j][i].punchline %></p>
                                 <%} else {%> 
-                                    <p class="card-title pb-3"><%= col[j][i].punchline%></p>
+                                    <p class="card-title p-4"><%= col[j][i].punchline%></p>
                                 <%}%>
-                                
                             </card>
-                            <div class="card-footer" data-id='<%=col[j][i]._id%>'>
-                                <span><%= col[j][i].likes%></span>
-                                <span class = 'fa-solid fa-thumbs-up  px-1 px-1'></span>
-                                <span><%= col[j][i].dislikes%></span>
-                                <span class='fa-solid fa-thumbs-down px-1'></span>
-                                <span class = 'delete fa-solid fa-trash px-1'></span>
-                            </div>
+                            <div class="card-footer mt-auto" data-id='<%=col[j][i]._id%>'>
+                                    <span><%= col[j][i].likes%></span>
+                                    <span class = 'fa-solid fa-thumbs-up  px-1 px-1'></span>
+                                    <span><%= col[j][i].dislikes%></span>
+                                    <span class='fa-solid fa-thumbs-down px-1'></span>
+                                    <span class = 'delete fa-solid fa-trash px-1'></span>
+                                </div>
                         </div>
                     <%}%>
                     </div>
@@ -85,13 +94,36 @@
     </section>
     
 
- 
 
-    <form action="/jokes/createJoke" method='POST'>
-        <input type="text" placeholder="Setup" name='setup'>
-        <input type="text" placeholder="Punchline" name='punchline'>
-        <input type="submit">
-    </form>
+    <!-- modal -->
+    <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create a New Joke</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <p class='lead'>Login</p> -->
+                    <form action="/jokes/createJoke" method='POST'>
+                        <div class='mb-3'>
+                            <label for="setup" class='col-form-label'>Setup: (If it is a one liner, leave this section blank)</label>
+                            <input class='form-control' type="text" name='setup' id='setup'>
+                        </div>
+                        <div class='mb-3'>
+                            <label for="punchline" class='col-form-label'>Punchline</label>
+                            <input class='form-control' type="text" name='punchline' id='punchline'>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Post</button>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
 
 
     <script src="../js/main.js"></script>
