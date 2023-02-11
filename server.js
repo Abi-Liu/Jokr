@@ -41,6 +41,6 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/jokes', jokeRoutes)
  
-app.listen(process.env.$PORT, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
 })    
