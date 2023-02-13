@@ -62,6 +62,28 @@ module.exports = {
             console.error(err)
         }
     },
+    removeLike: async(req, res) => {
+        try{
+            const user = req.user.id
+            const joke = await Joke.find({_id: req.body.id})
+            if(joke[0].likesArr.includes(user)){
+                await Joke.findOneAndUpdate({_id: req.body.id}, {
+                    $inc: {
+                        'likes': -1
+                    },
+                    $pull: {
+                        'likesArr': user
+                    }
+                })
+                console.log('like added')
+                res.json('like added')
+            }
+            console.log('user already liked')
+            res.json('user already liked')
+        } catch(err){
+            console.error(err)
+        }
+    },
     dislike: async (req, res) => {
         try{
             const user = req.user.id
@@ -82,6 +104,26 @@ module.exports = {
             console.log('user already disliked')
             res.json('user already disliked')
 
+        } catch(err){
+            console.error(err)
+        }
+    },
+    removeDislike: async(req, res) => {
+        try{
+            const user = req.user.id
+            const joke = await Joke.find({_id: req.body.id})
+            if(joke[0].likesArr.includes(user)){
+                await Joke.findOneAndUpdate({_id: req.body.id}, {
+                    $inc: {
+                        'dislikes': -1
+                    },
+                    $pull: {
+                        'dislikesArr': user
+                    }
+                })
+                console.log('dislike removed')
+                res.json('dislike removed')
+            }
         } catch(err){
             console.error(err)
         }

@@ -11,7 +11,11 @@ router.post("/createJoke", jokesController.createJoke);
 
 router.put("/like", jokesController.like);
 
+router.put("/removeLike", jokesController.removeLike);
+
 router.put("/dislike", jokesController.dislike);
+
+router.put("/removeDislike", jokesController.removeDislike);
 
 router.delete("/deleteJoke", jokesController.deleteJoke);
 
