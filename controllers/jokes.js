@@ -112,7 +112,7 @@ module.exports = {
         try{
             const user = req.user.id
             const joke = await Joke.find({_id: req.body.id})
-            if(joke[0].likesArr.includes(user)){
+            if(joke[0].dislikesArr.includes(user)){
                 await Joke.findOneAndUpdate({_id: req.body.id}, {
                     $inc: {
                         'dislikes': -1
