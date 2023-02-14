@@ -1,3 +1,5 @@
+![Jokr Demo](demo/Animation.gif)
+
 # Introduction
 
 This is a Full-stack joke sharing app called Jokr. I built this app using the MVC Architecture to organize and structure my code. I have also implemented "authorization" so users can sign up, and keep track of the jokes they post. 
