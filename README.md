@@ -1,4 +1,4 @@
-![Jokr Demo](demo/Animation.gif)(https://web-production-d555.up.railway.app/)
+![Jokr Demo](https://web-production-d555.up.railway.app/)
 
 # Introduction
 
